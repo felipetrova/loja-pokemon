@@ -1,2 +1,2 @@
 # loja-pokemon
-Shop for Pokémon sales
+E-commerce for Pokémon sales
