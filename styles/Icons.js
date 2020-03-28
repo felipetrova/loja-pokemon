@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const Icon = styled.i`
-  font-family: 'Font Awesome 5 Free' !important;
+const Icon = styled.i`
+  font-family: 'labiicons' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -11,4 +11,10 @@ export const Icon = styled.i`
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+`;
+
+export const ArrowLeft = styled(Icon)`
+  &:before {
+    content: "\\e902";
+  }
 `;

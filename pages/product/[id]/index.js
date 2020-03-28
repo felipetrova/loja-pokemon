@@ -1,14 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
-import axios from "axios";
 
 import * as GridStyle from "~/styles/Grid";
-import * as Style from './CardPokemonStyle';
+import * as Style from './style';
 
 import LoadingComponent from "~/components/Loading/Loading";
+import HeaderComponent from "~/components/Header/Header";
 import ButtonComponent from '~/components/Button/Button';
-import IconSvg from "./Icon";
+import IconSvg from "~/components/Icon/Icon";
 
-const Pokemon = (props) => {
+import API from "~/Services/Api";
+
+const PokemonInfo = ({ id }) => {
   const [pokemon, setPokemon] = useState([]);
   const [pokemonImg, setPokemonImg] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,7 +24,7 @@ const Pokemon = (props) => {
       setLoading(true);
       setErrorMsg("");
       
-      const response = await axios.get(props.pokemonUrl);
+      const response = await API.get(`pokemon/${id}/`);
       console.log(response.data);
       
       setPokemon(response.data);
@@ -49,10 +51,6 @@ const Pokemon = (props) => {
     }
   }
 
-  function test123(){
-    console.log(cartPokemon);
-  }
-
   useEffect(() => {
     loadPokemon();
   }, []);
@@ -61,13 +59,19 @@ const Pokemon = (props) => {
     <>
       {loading && <LoadingComponent />}
 
+      <HeaderComponent
+        directory="/"
+        slugPage={`/`}
+        title={`Pokémon ${pokemon.name}`}
+      />
+
       {(errorMsg || pokemon.length === 0) && (
         <div className="flex align-itcenter cont-center h-75vh">
           <p>{errorMsg}</p>
         </div>
       )}
 
-      <Style.CardPokemon className="mb-10px">
+      <Style.CardPokemon className="mt-85px">
         <GridStyle.Row>
           <GridStyle.Col general={12}>
             <img
@@ -150,7 +154,31 @@ const Pokemon = (props) => {
 
         <GridStyle.Row>
           <GridStyle.Col general={12}>
-            <Style.PokemonStats className="mt-10px mb-10px">
+            <Style.PokemonList className="mt-10px mb-10px">
+              <p className="fn-s18px fn-wb tx-red">
+                Abilities:
+              </p>
+              <ul>
+                {pokemon.abilities && pokemon.abilities.length > 0 &&
+                  pokemon.abilities.map((item, index) => (
+                    <li
+                      key={index + 1}
+                      className="ln-h24px"
+                    >
+                      <p>
+                        <strong>{item.ability.name}</strong>
+                      </p>
+                    </li>
+                  ))
+                }
+              </ul>
+            </Style.PokemonList>
+          </GridStyle.Col>
+        </GridStyle.Row>
+
+        <GridStyle.Row>
+          <GridStyle.Col general={12}>
+            <Style.PokemonList className="mt-10px mb-10px">
               <p className="fn-s18px fn-wb tx-red">
                 Stats:
               </p>
@@ -169,19 +197,11 @@ const Pokemon = (props) => {
                   ))
                 }
               </ul>
-            </Style.PokemonStats>
+            </Style.PokemonList>
           </GridStyle.Col>
         </GridStyle.Row>
 
         <GridStyle.Row>
-          <GridStyle.Col mobile={12} tablet={6} general={3}>
-            <ButtonComponent
-              txt={'View more'}
-              className="fn-s18px tx-white br-10px h-52px w-100 fn-wb"
-              onClick={() => test123()}
-            />
-          </GridStyle.Col>
-
           <GridStyle.Col mobile={12} tablet={6} general={6}>
             <ButtonComponent
               txt={'Add to Cart'}
@@ -193,6 +213,12 @@ const Pokemon = (props) => {
       </Style.CardPokemon>
     </>
   );
+}
+
+PokemonInfo.getInitialProps = async ({ query }) => {
+  return {
+    id: query.id
+  };
 };
 
-export default Pokemon;
+export default PokemonInfo;

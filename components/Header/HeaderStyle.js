@@ -7,22 +7,22 @@ export const Header = styled.header`
   left: 0;
   z-index: 9;
 
-  p{
+  p {
     line-height: 23px;
   }
 
-  div{
+  div {
     height: 45px;
   }
 
-  img{
+  img {
     max-width: 61px;
     width: 100%;
     height: auto;
   }
 
-  i{
-    &:first-of-type{
+  i {
+    &:first-of-type {
       margin-left: 8px;
       font-size: 20px;
     }

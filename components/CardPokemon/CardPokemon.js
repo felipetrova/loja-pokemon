@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
+/* import Router from "next/router"; */
 import axios from "axios";
+import Link from "next/link";
 
 import * as GridStyle from "~/styles/Grid";
 import * as Style from './CardPokemonStyle';
@@ -48,6 +50,18 @@ const Pokemon = (props) => {
       });
     }
   }
+
+  /* function goToProduct(id){
+    console.log(cartPokemon);
+
+    Router.push({
+      pathname: `/product/${id}`,
+      query: {
+        querySearch,
+        filters
+      }
+    });
+  } */
 
   useEffect(() => {
     loadPokemon();
@@ -114,10 +128,16 @@ const Pokemon = (props) => {
 
         <GridStyle.Row>
           <GridStyle.Col mobile={12} tablet={6} general={3}>
-            <ButtonComponent
-              txt={'View more'}
-              className="fn-s18px tx-white br-10px h-52px w-100 fn-wb"
-            />
+            <Link
+              href={`/product/${pokemon.id}`}
+              /* as={`/product/${pokemon.id}`} */
+            >
+              <ButtonComponent
+                txt={'View more'}
+                className="fn-s18px tx-white br-10px h-52px w-100 fn-wb"
+                /* onClick={() => goToProduct(pokemon.id)} */
+              />
+            </Link>
           </GridStyle.Col>
 
           <GridStyle.Col mobile={12} tablet={6} general={6}>
