@@ -64,7 +64,7 @@ const Pokemon = (props) => {
         </GridStyle.Row>
         
         <GridStyle.Row>
-          <GridStyle.Col general={12}>
+          <GridStyle.Col mobile={6} tablet={3} general={3}>
             <p>
               <strong>
                 Pokemon name:
@@ -80,10 +80,8 @@ const Pokemon = (props) => {
               {pokemon.name}
             </p>
           </GridStyle.Col>
-        </GridStyle.Row>
-
-        <GridStyle.Row>
-          <GridStyle.Col mobile={12} tablet={4} general={4}>
+          
+          <GridStyle.Col mobile={6} tablet={3} general={3}>
             <p>
               <strong>
                 Base experience:
@@ -100,7 +98,7 @@ const Pokemon = (props) => {
             </p>
           </GridStyle.Col>
 
-          <GridStyle.Col mobile={12} tablet={4} general={4}>
+          <GridStyle.Col mobile={6} tablet={3} general={3}>
             <p>
               <strong>
                 Height:
@@ -117,7 +115,7 @@ const Pokemon = (props) => {
             </p>
           </GridStyle.Col>
 
-          <GridStyle.Col mobile={12} tablet={4} general={4}>
+          <GridStyle.Col mobile={6} tablet={3} general={3}>
             <p>
               <strong>
                 Weight:
@@ -132,6 +130,31 @@ const Pokemon = (props) => {
               {" "}
               {pokemon.weight}
             </p>
+          </GridStyle.Col>
+        </GridStyle.Row>
+
+        <GridStyle.Row>
+          <GridStyle.Col general={12}>
+            <Style.PokemonStats className="mt-10px mb-10px">
+              <p className="fn-s18px fn-wb tx-red">
+                Stats:
+              </p>
+              <ul>
+                {pokemon.stats && pokemon.stats.length > 0 &&
+                  pokemon.stats.map((item, index) => (
+                    <li
+                      key={index + 1}
+                      className="ln-h24px"
+                    >
+                      <p>
+                        <strong>{item.stat.name}</strong>
+                        {" - "} {item.base_stat}
+                      </p>
+                    </li>
+                  ))
+                }
+              </ul>
+            </Style.PokemonStats>
           </GridStyle.Col>
         </GridStyle.Row>
 
