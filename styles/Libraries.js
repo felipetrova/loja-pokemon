@@ -146,6 +146,9 @@ const LibsStyle = createGlobalStyle`
   .tx-up {
     text-transform: uppercase;
   }
+  .tx-ca {
+    text-transform: capitalize;
+  }
   .tx-du {
     text-decoration: underline;
   }
