@@ -12,6 +12,7 @@ export default function header({ title, slugPage, directory }) {
           className="flex align-itcenter no-margin no-padding"
           mobile={1}
           tablet={3}
+          desktop={1}
         >
           <Link href={`${directory}`} as={`${slugPage}`}>
             <ArrowLeft className="tx-blue fn-wb" />
@@ -22,6 +23,7 @@ export default function header({ title, slugPage, directory }) {
           className="flex align-itcenter cont-center no-margin"
           mobile={10}
           tablet={3}
+          desktop={10}
         >
           <p className="fn-s18px fn-wb tx-blue">{title}</p>
         </GridStyle.Col>
@@ -29,7 +31,8 @@ export default function header({ title, slugPage, directory }) {
           className="flex align-itcenter no-margin"
           mobile={1}
           tablet={3}
-        ></GridStyle.Col>
+          desktop={1}
+        />
       </GridStyle.Row>
     </Style.Header>
   );

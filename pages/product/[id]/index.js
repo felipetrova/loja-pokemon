@@ -55,11 +55,12 @@ const PokemonInfo = ({ id }) => {
     slidesToScroll: 1
   };
 
-  const addPokemonCart = async (name, id) => {
+  const addPokemonCart = async (id, name, value) => {
     if (!cartPokemon.includes(name) && !cartPokemon.includes(id)) {
       cartPokemon.push({
         pokemonId: id,
-        pokemonName: name
+        pokemonName: name,
+        pokemonValue: value
       });
 
       localStorage.setItem('Cart', JSON.stringify(cartPokemon));
@@ -103,7 +104,7 @@ const PokemonInfo = ({ id }) => {
         </Style.CarouselPokemon>
         
         <GridStyle.Row>
-          <GridStyle.Col mobile={6} tablet={3} general={3}>
+          <GridStyle.Col mobile={6} tablet={3} desktop={3}>
             <p className="tx-ca">
               <strong>
                 Pokemon name:
@@ -113,7 +114,7 @@ const PokemonInfo = ({ id }) => {
             </p>
           </GridStyle.Col>
           
-          <GridStyle.Col mobile={6} tablet={3} general={3}>
+          <GridStyle.Col mobile={6} tablet={3} desktop={3}>
             <p>
               <strong>
                 Base experience:
@@ -123,7 +124,7 @@ const PokemonInfo = ({ id }) => {
             </p>
           </GridStyle.Col>
 
-          <GridStyle.Col mobile={6} tablet={3} general={3}>
+          <GridStyle.Col mobile={6} tablet={3} desktop={3}>
             <p>
               <strong>
                 Height:
@@ -133,7 +134,7 @@ const PokemonInfo = ({ id }) => {
             </p>
           </GridStyle.Col>
 
-          <GridStyle.Col mobile={6} tablet={3} general={3}>
+          <GridStyle.Col mobile={6} tablet={3} desktop={3}>
             <p>
               <strong>
                 Weight:
@@ -194,17 +195,19 @@ const PokemonInfo = ({ id }) => {
         </GridStyle.Row>
 
         <GridStyle.Row>
-          <GridStyle.Col mobile={12} tablet={6} general={6}>
+          <GridStyle.Col tablet={3} desktop={3}/>
+          <GridStyle.Col mobile={12} tablet={6} desktop={6}>
             <ButtonComponent
               txt={'Add to Cart'}
               className="fn-s18px bg-red tx-white br-10px h-52px w-100 fn-wb"
-              onClick={() => addPokemonCart(pokemon.name, pokemon.id)}
+              onClick={() => addPokemonCart(pokemon.id, pokemon.name, pokemon.order)}
             >
               {" - "}
               <Money />
               {`${pokemon.order}`}
             </ButtonComponent>
           </GridStyle.Col>
+          <GridStyle.Col tablet={3} desktop={3}/>
         </GridStyle.Row>
       </Style.CardPokemon>
     </>

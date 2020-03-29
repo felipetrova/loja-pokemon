@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import * as GridStyle from "~/styles/Grid";
 import * as Style from './CardPokemonStyle';
+import { Money } from "~/styles/Icons";
 
 import LoadingComponent from "~/components/Loading/Loading";
 import ButtonComponent from '~/components/Button/Button';
@@ -41,12 +42,15 @@ const Pokemon = (props) => {
     setLoading(false);
   });
 
-  const addPokemonCart = async (name, id) => {
+  const addPokemonCart = async (id, name, value) => {
     if (!cartPokemon.includes(name) && !cartPokemon.includes(id)) {
       cartPokemon.push({
         pokemonId: id,
-        pokemonName: name
+        pokemonName: name,
+        pokemonValue: value
       });
+
+      localStorage.setItem('Cart', JSON.stringify(cartPokemon));
     }
   }
 
@@ -76,7 +80,7 @@ const Pokemon = (props) => {
         </GridStyle.Row>
         
         <GridStyle.Row>
-          <GridStyle.Col mobile={12} tablet={4} general={3}>
+          <GridStyle.Col mobile={12} tablet={12} desktop={6}>
             <p className="fn-s18px tx-ca">
               <span className="fn-wb tx-up">
                 <IconSvg
@@ -94,7 +98,7 @@ const Pokemon = (props) => {
             </p>
           </GridStyle.Col>
           
-          <GridStyle.Col mobile={12} tablet={4} general={3}>
+          <GridStyle.Col mobile={12} tablet={12} desktop={6}>
             <p className="fn-s18px tx-ca">
               <span className="fn-wb tx-up">
                 <IconSvg
@@ -114,7 +118,7 @@ const Pokemon = (props) => {
         </GridStyle.Row>
 
         <GridStyle.Row>
-          <GridStyle.Col mobile={12} tablet={6} general={3}>
+          <GridStyle.Col general={12}>
             <Link
               href={`/product/${pokemon.id}`}
             >
@@ -125,12 +129,16 @@ const Pokemon = (props) => {
             </Link>
           </GridStyle.Col>
 
-          <GridStyle.Col mobile={12} tablet={6} general={6}>
+          <GridStyle.Col general={12}>
             <ButtonComponent
               txt={'Add to Cart'}
               className="fn-s18px bg-red tx-white br-10px h-52px w-100 fn-wb"
-              onClick={() => addPokemonCart(pokemon.name, pokemon.id)}
-            />
+              onClick={() => addPokemonCart(pokemon.id, pokemon.name, pokemon.order)}
+            >
+              {" - "}
+              <Money />
+              {`${pokemon.order}`}
+            </ButtonComponent>
           </GridStyle.Col>
         </GridStyle.Row>
       </Style.CardPokemon>
