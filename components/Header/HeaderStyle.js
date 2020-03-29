@@ -9,6 +9,7 @@ export const Header = styled.header`
 
   p {
     line-height: 23px;
+    text-transform: capitalize;
   }
 
   div {

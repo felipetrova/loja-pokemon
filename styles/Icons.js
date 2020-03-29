@@ -18,3 +18,9 @@ export const ArrowLeft = styled(Icon)`
     content: "\\e902";
   }
 `;
+
+export const Money = styled(Icon)`
+  &:before {
+    content: "\\e900";
+  }
+`;
