@@ -7,12 +7,17 @@ import LoadingComponent from "~/components/Loading/Loading";
 import SideBarComponent from "~/components/SideBar/SideBar";
 import PokemonComponent from "~/components/CardPokemon/CardPokemon";
 
+import ModalComponent from "~/components/Modal/Modal";
+import ModalCheckout from "~/components/Modal/ModalCheckout";
+
 import API from "~/Services/Api";
 
 const Index = () => {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [modalComponent, setModalComponent] = useState(null);
   
   const loadPokType = useCallback(async () => {
     const idPokType = Math.floor(Math.random() * 19);
@@ -38,6 +43,16 @@ const Index = () => {
     setLoading(false);
   });
 
+  // eslint-disable-next-line no-unused-vars
+  const handleShowModal = component => {
+    setShowModal(true);
+    setModalComponent(component);
+  };
+
+  const handleHideModal = () => {
+    setShowModal(false);
+  };
+
   useEffect(() => {
     loadPokType();
   }, []);
@@ -45,6 +60,14 @@ const Index = () => {
   return (
     <>
       {loading && <LoadingComponent />}
+
+      <ModalComponent
+        activeModal={showModal}
+        iconCloseModal={true}
+        closeModal={() => handleHideModal()}
+      >
+        {modalComponent}
+      </ModalComponent>
 
       <HeaderComponent
         link="/"
@@ -88,7 +111,15 @@ const Index = () => {
               tablet={4}
               desktop={3}
             >
-              <SideBarComponent />
+              <SideBarComponent
+                modalCheckout={() =>
+                  handleShowModal(
+                    <ModalCheckout
+                      closeModal={() => handleHideModal()}
+                    />
+                  )
+                }
+              />
             </GridStyle.Col>
           </GridStyle.Row>
         </GridStyle.Container>

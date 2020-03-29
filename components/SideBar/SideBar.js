@@ -8,7 +8,7 @@ import { Money } from "~/styles/Icons";
 import LoadingComponent from "~/components/Loading/Loading";
 import ButtonComponent from '~/components/Button/Button';
 
-const SideBar = () => {
+const SideBar = ({modalCheckout}) => {
   const [setCart, setCartState] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -39,7 +39,6 @@ const SideBar = () => {
   return (
     <>
       {loading && <LoadingComponent />}
-
 
       <Style.SideBar>
         {(errorMsg || setCart.length === 0) && (
@@ -87,6 +86,7 @@ const SideBar = () => {
             <ButtonComponent
               txt={'Checkout'}
               className="fn-s18px bg-yellow tx-darkgrey br-4px h-52px w-100 fn-wb bntCheckout"
+              onClick={modalCheckout}
             />
           </GridStyle.Col>
         </GridStyle.Row>

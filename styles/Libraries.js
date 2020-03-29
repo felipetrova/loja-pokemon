@@ -215,6 +215,12 @@ const LibsStyle = createGlobalStyle`
   .bg-red-outlined{
     background: ${C.WHITE};
     border: 1px solid ${C.RED};
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background: ${C.RED};
+      color: ${C.WHITE};
+    }
   }
 
   /* TEXT COLORS */
