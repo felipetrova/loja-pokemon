@@ -1,11 +1,12 @@
 import * as Style from "./ModalStyle";
 
-export default function Modal({
+const Modal = ({
   children,
   activeModal,
   iconCloseModal,
   closeModal
-}) {
+}) => {
+  
   return (
     <Style.Modal className={activeModal ? "is-active" : ""}>
       <div className="modal-background"></div>
@@ -21,3 +22,5 @@ export default function Modal({
     </Style.Modal>
   );
 }
+
+export default Modal;

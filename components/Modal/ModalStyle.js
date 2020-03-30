@@ -56,6 +56,7 @@ export const Modal = styled.div`
       justify-content: center;
       font-size: 0.875em;
       z-index: 1;
+      cursor: pointer;
     }
 
     .max-content__modal {

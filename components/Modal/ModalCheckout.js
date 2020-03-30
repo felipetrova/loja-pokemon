@@ -2,9 +2,8 @@ import { Money } from "~/styles/Icons";
 
 import * as GridStyle from "~/styles/Grid";
 
-export default function ({
-  closeModal
-}) {
+const ModalCheckout = ({closeModal}) => {
+  const valueOff = Math.floor(Math.random() * 303);
 
   return (
     <>
@@ -18,7 +17,7 @@ export default function ({
 
         <strong>
           <Money />
-          123,00
+          {valueOff}
         </strong>
         {" "}
         back
@@ -42,3 +41,5 @@ export default function ({
     </>
   );
 }
+
+export default ModalCheckout;
