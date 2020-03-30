@@ -6,6 +6,7 @@ import HeaderComponent from "~/components/Header/Header";
 import LoadingComponent from "~/components/Loading/Loading";
 import SideBarComponent from "~/components/SideBar/SideBar";
 import PokemonComponent from "~/components/CardPokemon/CardPokemon";
+import SearchComponent from "~/components/Search/Search";
 
 import ModalComponent from "~/components/Modal/Modal";
 import ModalCheckout from "~/components/Modal/ModalCheckout";
@@ -53,6 +54,10 @@ const Index = () => {
     setShowModal(false);
   };
 
+  async function searchProducts(term) {
+    console.log(term);
+  }
+
   useEffect(() => {
     loadPokType();
   }, []);
@@ -72,6 +77,10 @@ const Index = () => {
       <HeaderComponent
         link="/"
         title={`Pokémon Type - ${pokemon.name}`}
+      />
+
+      <SearchComponent
+        searchProducts={e => searchProducts(e)}
       />
 
       <div className="mt-85px">
