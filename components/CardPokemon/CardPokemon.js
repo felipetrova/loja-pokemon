@@ -8,7 +8,7 @@ import { Money } from "~/styles/Icons";
 
 import LoadingComponent from "~/components/Loading/Loading";
 import ButtonComponent from '~/components/Button/Button';
-import IconSvg from "~/components/Icon/Icon";
+import IconComponent from "~/components/IconSvg/IconSvg";
 
 const Pokemon = (props) => {
   const [pokemon, setPokemon] = useState([]);
@@ -83,7 +83,7 @@ const Pokemon = (props) => {
           <GridStyle.Col mobile={12} tablet={12} desktop={6}>
             <p className="fn-s18px tx-ca">
               <span className="fn-wb tx-up">
-                <IconSvg
+                <IconComponent
                   width={20}
                   fill={"#1c1e22"}
                   viewBox={"0 0 640 512"}
@@ -101,7 +101,7 @@ const Pokemon = (props) => {
           <GridStyle.Col mobile={12} tablet={12} desktop={6}>
             <p className="fn-s18px tx-ca">
               <span className="fn-wb tx-up">
-                <IconSvg
+                <IconComponent
                   width={20}
                   fill={"#1c1e22"}
                   viewBox={"0 0 512 512"}
