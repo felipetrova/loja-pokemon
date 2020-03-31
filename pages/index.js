@@ -54,7 +54,7 @@ const Index = () => {
     setShowModal(false);
   };
 
-  async function searchProducts(term) {
+  async function searchPokemons(term) {
     console.log(term);
   }
 
@@ -80,10 +80,10 @@ const Index = () => {
       />
 
       <SearchComponent
-        searchProducts={e => searchProducts(e)}
+        searchPokemons={e => searchPokemons(e)}
       />
 
-      <div className="mt-85px">
+      <div className="mt-125px">
         {(errorMsg || pokemon.length === 0) && (
           <div className="flex align-itcenter cont-center h-75vh">
             <p>{errorMsg}</p>

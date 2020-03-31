@@ -312,6 +312,10 @@ const LibsStyle = createGlobalStyle`
     margin-top: 5.3125rem;
   }
 
+  .mt-125px {
+    margin-top: 7.813rem;
+  }
+
   /* MARGIN LEFT */
   .ml-5px{
     margin-left: 0.3125rem;

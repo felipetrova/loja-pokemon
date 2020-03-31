@@ -87,7 +87,7 @@ const PokemonInfo = ({ id }) => {
         </div>
       )}
 
-      <Style.CardPokemon className="mt-85px">
+      <Style.CardPokemon className="mt-125px">
         <Style.CarouselPokemon>
           <Slider {...slide}>
             <img
