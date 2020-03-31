@@ -9,7 +9,7 @@ const Suggestions = (props) => {
         <Link
           href={`/product/${props.results.id}`}
         >
-          <p className="mt-6px bg-none tx-darkgrey fn-s14px ln-h19px tx-dn">
+          <p className="bg-none tx-darkgrey fn-s14px ln-h19px tx-dn">
             {props.results.name}
           </p>
         </Link>

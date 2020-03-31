@@ -23,6 +23,8 @@ export const Header = styled.header`
   }
 
   i {
+    cursor: pointer;
+
     &:first-of-type {
       margin-left: 8px;
       font-size: 20px;
