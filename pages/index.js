@@ -19,6 +19,9 @@ const Index = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [modalComponent, setModalComponent] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [cartPokemon, setCartPokemon] = useState([]);
+  const [setUpdateCart, setUpdateCartState] = useState([]);
   
   const loadPokType = useCallback(async () => {
     const idPokType = Math.floor(Math.random() * 19);
@@ -43,6 +46,21 @@ const Index = () => {
 
     setLoading(false);
   });
+
+  const addPokemonCart = async (id, name, value) => {
+    console.log(id, name, value);
+    if (!cartPokemon.includes(name) && !cartPokemon.includes(id)) {
+      cartPokemon.push({
+        pokemonId: id,
+        pokemonName: name,
+        pokemonValue: value
+      });
+
+      localStorage.setItem('Cart', JSON.stringify(cartPokemon));
+
+      setUpdateCartState(JSON.parse(localStorage.getItem('Cart')));
+    }
+  }
 
   // eslint-disable-next-line no-unused-vars
   const handleShowModal = component => {
@@ -109,6 +127,7 @@ const Index = () => {
                       <PokemonComponent
                         pokemonName={item.pokemon.name}
                         pokemonUrl={item.pokemon.url}
+                        addPokemonCart={() => addPokemonCart()}
                       />
                     </GridStyle.Col>
                   ))
@@ -117,6 +136,7 @@ const Index = () => {
             </GridStyle.Col>
 
             <GridStyle.Col
+              mobile={12}
               tablet={4}
               desktop={3}
             >
@@ -128,6 +148,7 @@ const Index = () => {
                     />
                   )
                 }
+                updateCart={setUpdateCart}
               />
             </GridStyle.Col>
           </GridStyle.Row>

@@ -15,8 +15,6 @@ const Pokemon = (props) => {
   const [pokemonImg, setPokemonImg] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  // eslint-disable-next-line no-unused-vars
-  const [cartPokemon, setCartPokemon] = useState([]);
   
   const loadPokemon = useCallback(async () => {
 
@@ -41,18 +39,6 @@ const Pokemon = (props) => {
 
     setLoading(false);
   });
-
-  const addPokemonCart = async (id, name, value) => {
-    if (!cartPokemon.includes(name) && !cartPokemon.includes(id)) {
-      cartPokemon.push({
-        pokemonId: id,
-        pokemonName: name,
-        pokemonValue: value
-      });
-
-      localStorage.setItem('Cart', JSON.stringify(cartPokemon));
-    }
-  }
 
   useEffect(() => {
     loadPokemon();
@@ -133,7 +119,7 @@ const Pokemon = (props) => {
             <ButtonComponent
               txt={'Add to Cart'}
               className="fn-s18px bg-red tx-white br-10px h-52px w-100 fn-wb"
-              onClick={() => addPokemonCart(pokemon.id, pokemon.name, pokemon.order)}
+              onClick={() => props.addPokemonCart(pokemon.id, pokemon.name, pokemon.order)}
             >
               {" - "}
               <Money />
