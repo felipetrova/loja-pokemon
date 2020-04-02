@@ -4,9 +4,9 @@ import { ArrowLeft } from "~/styles/Icons";
 
 import Link from "next/link";
 
-export default function header({ title, slugPage, directory }) {
+export default function header({ title, slugPage, directory, typeClass }) {
   return (
-    <Style.Header className="bg-yellow">
+    <Style.Header className={typeClass}>
       <GridStyle.Row className="no-gutters">
         <GridStyle.Col
           className="flex align-itcenter no-margin no-padding"
@@ -25,7 +25,7 @@ export default function header({ title, slugPage, directory }) {
           tablet={3}
           desktop={10}
         >
-          <p className="fn-s18px fn-wb tx-blue">{title}</p>
+          <p className="fn-s18px fn-wb title">{title}</p>
         </GridStyle.Col>
         <GridStyle.Col
           className="flex align-itcenter no-margin"
