@@ -15,7 +15,7 @@ export default function header({ title, slugPage, directory, typeClass }) {
           desktop={1}
         >
           <Link href={`${directory}`} as={`${slugPage}`}>
-            <ArrowLeft className="tx-blue fn-wb" />
+            <ArrowLeft className="tx-white fn-wb" />
           </Link>
         </GridStyle.Col>
 

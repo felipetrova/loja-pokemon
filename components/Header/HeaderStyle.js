@@ -33,10 +33,10 @@ export const Header = styled.header`
   }
 
   &.electric {
-    background: ${C.STORETWO1};
+    background: ${C.STOREFOUR1};
 
     .title {
-      color: ${C.STORETWO2};
+      color: ${C.STOREFOUR2};
     }
   }
 

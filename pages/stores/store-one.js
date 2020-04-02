@@ -94,8 +94,10 @@ const StoreOne = () => {
       </ModalComponent>
 
       <HeaderComponent
-        link="/"
+        directory="/"
+        slugPage={`/`}
         title={`Pokémon Type - ${pokemon.name}`}
+        typeClass={pokemon.name}
       />
 
       <SearchComponent
@@ -129,6 +131,7 @@ const StoreOne = () => {
                         pokemonName={item.pokemon.name}
                         pokemonUrl={item.pokemon.url}
                         addPokemonCart={() => addPokemonCart()}
+                        classButton="red"
                       />
                     </GridStyle.Col>
                   ))

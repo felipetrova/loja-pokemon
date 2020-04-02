@@ -13,7 +13,7 @@ import ModalCheckout from "~/components/Modal/ModalCheckout";
 
 import API from "~/Services/Api";
 
-const StoreOne = () => {
+const StoreTwo = () => {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -93,7 +93,8 @@ const StoreOne = () => {
       </ModalComponent>
 
       <HeaderComponent
-        link="/"
+        directory="/"
+        slugPage={`/`}
         title={`Pokémon Type - ${pokemon.name}`}
         typeClass={pokemon.name}
       />
@@ -129,6 +130,7 @@ const StoreOne = () => {
                         pokemonName={item.pokemon.name}
                         pokemonUrl={item.pokemon.url}
                         addPokemonCart={() => addPokemonCart()}
+                        classButton="storeTwo"
                       />
                     </GridStyle.Col>
                   ))
@@ -159,4 +161,4 @@ const StoreOne = () => {
   );
 };
 
-export default StoreOne;
+export default StoreTwo;

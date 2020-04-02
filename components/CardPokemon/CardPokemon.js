@@ -118,7 +118,7 @@ const Pokemon = (props) => {
           <GridStyle.Col general={12}>
             <ButtonComponent
               txt={'Add to Cart'}
-              className="fn-s18px bg-red tx-white br-10px h-52px w-100 fn-wb"
+              className={`fn-s18px bg-${props.classButton} tx-white br-10px h-52px w-100 fn-wb`}
               onClick={() => props.addPokemonCart(pokemon.id, pokemon.name, pokemon.order)}
             >
               {" - "}

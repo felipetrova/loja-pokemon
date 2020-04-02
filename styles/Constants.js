@@ -19,3 +19,7 @@ export const STORETWO2 = '#AD8534';
 // Variation Store Three
 export const STORETHREE1 = '#f9ca33';
 export const STORETHREE2 = '#0017AD';
+
+// Variation Store Four
+export const STOREFOUR1 = '#A32826';
+export const STOREFOUR2 = '#FF706E';
