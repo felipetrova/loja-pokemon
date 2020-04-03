@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import Slider from "react-slick";
 
 import * as GridStyle from "~/styles/Grid";
-import * as Style from './ProductStyle';
+import * as Style from '~/components/Product/ProductStyle';
 
 import LoadingComponent from "~/components/Loading/Loading";
 import HeaderComponent from "~/components/Header/Header";
