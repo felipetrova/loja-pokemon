@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import Router from "next/router";
 import Slider from "react-slick";
 
 import * as GridStyle from "~/styles/Grid";
@@ -75,6 +76,7 @@ const PokemonInfo = ({ id }) => {
       localStorage.setItem('Cart', JSON.stringify(cartPokemon));
       setUpdateCartState(JSON.parse(localStorage.getItem('Cart')));
     }
+
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -85,10 +87,15 @@ const PokemonInfo = ({ id }) => {
 
   const handleHideModal = () => {
     setShowModal(false);
+    Router.push(
+      "/",
+      `/`
+    );
   };
 
   useEffect(() => {
     loadPokemon();
+    setUpdateCartState(JSON.parse(localStorage.getItem('Cart')));
   }, []);
 
   return (

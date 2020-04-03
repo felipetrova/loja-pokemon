@@ -8,7 +8,7 @@ const ModalCheckout = ({closeModal}) => {
   return (
     <>
       <p className="fn-wb tx-blue fn-s18px ln-h18px mt-16px mb-12px has-text-centered">
-        Thank you!!!
+        Thanks for shopping with us!!!
       </p>
 
       <p className="fn-s14px ln-h14px tx-darkgrey mb-6px">
@@ -21,6 +21,10 @@ const ModalCheckout = ({closeModal}) => {
         </strong>
         {" "}
         back
+      </p>
+
+      <p className="fn-s14px ln-h14px tx-darkgrey mb-6px">
+        You will be directed to the home page...
       </p>
 
       <GridStyle.Col general={12} className="mt-40px mb-12px">
