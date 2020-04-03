@@ -1,4 +1,4 @@
-# loja-pokemon ![pokémon favicon](public/favicon.ico)
+# pokemon-stores ![pokémon favicon](public/favicon.ico)
 E-commerce for Pokémon sales
 
 ## How to run
