@@ -1,4 +1,4 @@
-/* import { useState, useEffect, useCallback } from "react"; */
+import { useEffect, useCallback } from "react";
 
 import * as GridStyle from "~/styles/Grid";
 import * as Style from './SideBarStyle';
@@ -8,19 +8,23 @@ import { Money } from "~/styles/Icons";
 import ButtonComponent from '~/components/Button/Button';
 
 const SideBar = ({modalCheckout, updateCart}) => {
-  /* const [setCart, setCartState] = useState([]); */
-  /* const [loading, setLoading] = useState(false); */
-
-  console.log(updateCart);
+  /* const [setCart, setCartState] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(""); */
   
-  /* const loadCart = useCallback(async () => {
-    try {
+  const loadCart = useCallback(async () => {
+    console.log(updateCart);
+    console.log(updateCart.length);
+    console.log('Cart: ', localStorage.getItem('Cart'));
+
+    /* try {
       setLoading(true);
       setErrorMsg("");
 
       console.log('Cart: ', localStorage.getItem('Cart'));
-      setCartState(JSON.parse(localStorage.getItem('Cart')));
-      console.log('Cart: ', JSON.parse(setCart));
+      setCartState(
+        updateCart && updateCart.length >= 1 ? updateCart : JSON.parse(localStorage.getItem('Cart'))
+      );
 
       if (localStorage.getItem('Cart') === null) {
         setErrorMsg("No pokémon added to cart. Please add a Pokémon in the cart.");
@@ -29,12 +33,12 @@ const SideBar = ({modalCheckout, updateCart}) => {
       setErrorMsg("No pokémon added to cart. Please add a Pokémon in the cart.");
     }
 
-    setLoading(false);
+    setLoading(false); */
   });
 
   useEffect(() => {
     loadCart();
-  }, []); */
+  }, []);
 
   return (
     <>
@@ -45,19 +49,19 @@ const SideBar = ({modalCheckout, updateCart}) => {
           <GridStyle.Col
             general={12}
             className="border-bottom-1px-lightgrey has-text-centered"
-            >
+          >
             <p className="fn-s18px tx-up fn-wb">
               Cart
             </p>
           </GridStyle.Col>
         </GridStyle.Row>
         
-        {(updateCart === null) && (
+        {(updateCart === null || updateCart.length == 0) && (
           <GridStyle.Row>
             <GridStyle.Col general={12}>
               <div className="flex align-itcenter cont-center">
                 <p>
-                  No pokémon added to cart. Please add a Pokémon in the cart.
+                  {/* {errorMsg} */}
                 </p>
               </div>
             </GridStyle.Col>

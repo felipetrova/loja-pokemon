@@ -26,6 +26,7 @@ const PokemonInfo = ({ id }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalComponent, setModalComponent] = useState(null);
   const [setUpdateCart, setUpdateCartState] = useState([]);
+  const [setPokemonType, setPokemonTypeState] = useState("");
   
   const loadPokemon = useCallback(async () => {
     try {
@@ -33,7 +34,6 @@ const PokemonInfo = ({ id }) => {
       setErrorMsg("");
       
       const response = await API.get(`pokemon/${id}/`);
-      console.log(response.data);
       
       setPokemon(response.data);
       setPokemonImg(
@@ -42,6 +42,8 @@ const PokemonInfo = ({ id }) => {
       setPokemonImgShiny(
         response.data.sprites.front_shiny && response.data.sprites.front_shiny !== null ? response.data.sprites.front_shiny : response.data.sprites.front_shiny_female
       );
+
+      setPokemonTypeState(response.data.types[0].type.name);
 
       if (response.data.length === 0) {
         setErrorMsg("Erro ao carregar Pokémon. Favor tentar novamente.");
@@ -71,7 +73,6 @@ const PokemonInfo = ({ id }) => {
       });
 
       localStorage.setItem('Cart', JSON.stringify(cartPokemon));
-
       setUpdateCartState(JSON.parse(localStorage.getItem('Cart')));
     }
   }
@@ -106,6 +107,7 @@ const PokemonInfo = ({ id }) => {
         directory="/"
         slugPage={`/`}
         title={`Pokémon ${pokemon.name}`}
+        typeClass={setPokemonType}
       />
 
       {(errorMsg || pokemon.length === 0) && (

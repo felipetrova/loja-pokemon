@@ -7,13 +7,10 @@ export const Header = styled.header`
   top: 0;
   left: 0;
   z-index: 9;
+  background: ${C.YELLOW};
 
-  &.rock {
-    background: ${C.YELLOW};
-
-    .title {
-      color: ${C.BLUE};
-    }
+  .title {
+    color: ${C.BLUE};
   }
 
   &.flying {

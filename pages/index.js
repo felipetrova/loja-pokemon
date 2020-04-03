@@ -36,7 +36,7 @@ const Index = () => {
                 <Link
                   href="/stores/store-one"
                 >
-                  Pokémon Type - Rock
+                  <a>Pokémon Type - Rock</a>
                 </Link>
               </div>
             </GridStyle.Col>
@@ -50,7 +50,7 @@ const Index = () => {
                 <Link
                   href="/stores/store-two"
                 >
-                  Pokémon Type - Flying
+                  <a>Pokémon Type - Flying</a>
                 </Link>
               </div>
             </GridStyle.Col>
@@ -64,7 +64,7 @@ const Index = () => {
                 <Link
                   href="/stores/store-three"
                 >
-                  Pokémon Type - Dark
+                  <a>Pokémon Type - Dark</a>
                 </Link>
               </div>
             </GridStyle.Col>
@@ -78,7 +78,7 @@ const Index = () => {
                 <Link
                   href="/stores/store-four"
                 >
-                  Pokémon Type - Electric
+                  <a>Pokémon Type - Electric</a>
                 </Link>
               </div>
             </GridStyle.Col>
