@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import Router from "next/router";
 
 import * as GridStyle from "~/styles/Grid";
 
@@ -33,7 +34,6 @@ const StoreOne = () => {
         setErrorMsg("");
         
         const response = await API.get(`type/${idPokType}/?offset=0&limit=20`);
-        console.log(response.data.pokemon);
         
         setPokemon(response.data);
   
@@ -49,7 +49,6 @@ const StoreOne = () => {
   });
 
   const addPokemonCart = async (id, name, value) => {
-    console.log(id, name, value);
     if (!cartPokemon.includes(name) && !cartPokemon.includes(id)) {
       cartPokemon.push({
         pokemonId: id,
@@ -58,7 +57,6 @@ const StoreOne = () => {
       });
 
       localStorage.setItem('Cart', JSON.stringify(cartPokemon));
-
       setUpdateCartState(JSON.parse(localStorage.getItem('Cart')));
     }
   }
@@ -71,14 +69,15 @@ const StoreOne = () => {
 
   const handleHideModal = () => {
     setShowModal(false);
+    Router.push(
+      "/",
+      `/`
+    );
   };
-
-  async function searchPokemons(term) {
-    console.log(term);
-  }
 
   useEffect(() => {
     loadPokType();
+    setUpdateCartState(JSON.parse(localStorage.getItem('Cart')));
   }, []);
 
   return (
@@ -100,9 +99,7 @@ const StoreOne = () => {
         typeClass={pokemon.name}
       />
 
-      <SearchComponent
-        searchPokemons={e => searchPokemons(e)}
-      />
+      <SearchComponent />
 
       <div className="mt-125px">
         {(errorMsg || pokemon.length === 0) && (
@@ -130,7 +127,7 @@ const StoreOne = () => {
                       <PokemonComponent
                         pokemonName={item.pokemon.name}
                         pokemonUrl={item.pokemon.url}
-                        addPokemonCart={() => addPokemonCart()}
+                        addPokemonCart={(val1, val2, val3) => addPokemonCart(val1, val2, val3)}
                         classButton="red"
                       />
                     </GridStyle.Col>

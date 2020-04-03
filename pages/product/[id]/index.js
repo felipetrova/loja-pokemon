@@ -76,7 +76,6 @@ const PokemonInfo = ({ id }) => {
       localStorage.setItem('Cart', JSON.stringify(cartPokemon));
       setUpdateCartState(JSON.parse(localStorage.getItem('Cart')));
     }
-
   }
 
   // eslint-disable-next-line no-unused-vars

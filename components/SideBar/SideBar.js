@@ -1,49 +1,13 @@
-import { useEffect, useCallback } from "react";
-
 import * as GridStyle from "~/styles/Grid";
 import * as Style from './SideBarStyle';
 import { Money } from "~/styles/Icons";
 
-/* import LoadingComponent from "~/components/Loading/Loading"; */
 import ButtonComponent from '~/components/Button/Button';
 
 const SideBar = ({modalCheckout, updateCart}) => {
-  /* const [setCart, setCartState] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState(""); */
-  
-  const loadCart = useCallback(async () => {
-    console.log(updateCart);
-    console.log(updateCart.length);
-    console.log('Cart: ', localStorage.getItem('Cart'));
-
-    /* try {
-      setLoading(true);
-      setErrorMsg("");
-
-      console.log('Cart: ', localStorage.getItem('Cart'));
-      setCartState(
-        updateCart && updateCart.length >= 1 ? updateCart : JSON.parse(localStorage.getItem('Cart'))
-      );
-
-      if (localStorage.getItem('Cart') === null) {
-        setErrorMsg("No pokémon added to cart. Please add a Pokémon in the cart.");
-      }
-    } catch (error) {
-      setErrorMsg("No pokémon added to cart. Please add a Pokémon in the cart.");
-    }
-
-    setLoading(false); */
-  });
-
-  useEffect(() => {
-    loadCart();
-  }, []);
 
   return (
     <>
-      {/* {loading && <LoadingComponent />} */}
-
       <Style.SideBar>
         <GridStyle.Row>
           <GridStyle.Col
@@ -61,7 +25,7 @@ const SideBar = ({modalCheckout, updateCart}) => {
             <GridStyle.Col general={12}>
               <div className="flex align-itcenter cont-center">
                 <p>
-                  {/* {errorMsg} */}
+                  No pokémon added to cart. Please add a Pokémon in the cart.
                 </p>
               </div>
             </GridStyle.Col>

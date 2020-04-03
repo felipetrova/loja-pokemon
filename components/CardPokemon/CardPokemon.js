@@ -23,7 +23,6 @@ const Pokemon = (props) => {
       setErrorMsg("");
       
       const response = await axios.get(props.pokemonUrl);
-      console.log(response.data);
       
       setPokemon(response.data);
       setPokemonImg(
@@ -39,6 +38,10 @@ const Pokemon = (props) => {
 
     setLoading(false);
   });
+
+  function addPokemonCart(id, name, value) {
+    props.addPokemonCart(id, name, value);
+  }
 
   useEffect(() => {
     loadPokemon();
@@ -119,7 +122,7 @@ const Pokemon = (props) => {
             <ButtonComponent
               txt={'Add to Cart'}
               className={`fn-s18px bg-${props.classButton} tx-white br-10px h-52px w-100 fn-wb`}
-              onClick={() => props.addPokemonCart(pokemon.id, pokemon.name, pokemon.order)}
+              onClick={() => addPokemonCart(pokemon.id, pokemon.name, pokemon.order)}
             >
               {" - "}
               <Money />
